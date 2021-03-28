@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-1-30 13:16:03 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="entity.Upload" table="UPLOAD">
+    	<composite-id>
+    		<key-property name="imageSetId" column="IMAGESETID" type="integer">
+    		</key-property>
+    		<key-property name="imageId" type="integer" column="IMAGEID">
+            </key-property>
+        </composite-id>
+        <!-- 
+        <id name="imageId" type="integer">
+            <column name="IMAGEID" />
+            <generator class="identity" />         
+        </id>       
+          -->
+        <property name="uid" type="int">
+            <column name="UID" />
+        </property>
+        <property name="upa" type="java.lang.String">
+            <column name="UPA" />
+        </property>
+        <property name="detaildescription" type="java.lang.String">
+            <column name="DETAILDESCRIPTION" />
+        </property>
+        <property name="label1" type="java.lang.String">
+            <column name="LABEL1" />
+        </property>
+        <property name="label2" type="java.lang.String">
+            <column name="LABEL2" />
+        </property>
+        <property name="label3" type="java.lang.String">
+            <column name="LABEL3" />
+        </property>
+        <property name="username" type="java.lang.String">
+            <column name="USERNAME" />
+        </property>
+    </class>
+</hibernate-mapping>

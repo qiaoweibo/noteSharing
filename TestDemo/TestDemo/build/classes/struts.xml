@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+    <!-- 
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="true" />
+	<constant name="struts.custom.i18n.resources" value="app"></constant>
+	<constant name="struts.multipart.maxSize" value="2097152"/>
+    <package name="default" namespace="/" extends="struts-default">
+			<action name="upload1" class="com.imooc.action.Upload" method="upload1">
+					<result>/jsp/s003.jsp</result>
+					<result name="input">/jsp/error.jsp</result>
+					
+					<interceptor-ref name="defaultStack"></interceptor-ref>
+					<interceptor-ref name="fileUpload">
+						<param name="allowedTypes">image/bmp,image/x-png,image/gif,image/jpeg</param>
+						<param name="maximumSize" >2097152</param>
+					</interceptor-ref>					
+			</action>
+			
+			<action name="download" class="com.imooc.action.FileDownloadAction">
+				<param name="inputPath">/images/img2-lg.jpg</param>
+				<result name="success" type="stream">
+					<param name="contentType">application/octet-stream</param>
+					<param name="inputName">inputStream</param>
+					<param name="contentDisposition">attachment;filename="${downloadFileName}"</param>
+					<param name="bufferSize">8192</param>
+				</result>
+			</action>
+	</package>
+	 -->
+	 <bean type= "org.apache.struts2.dispatcher.multipart.MultiPartRequest" name= "myRequestParser" class= "action.AndriodToServer" scope= "default" optional= "true " />
+	  <constant name= "struts.multipart.parser" value= "myRequestParser" />
+		<!-- 以下为json格式的配置 -->
+	<package name="default" namespace="/" extends="struts-default,json-default">
+        <action name="upload" class="action.AndriodToServer" method="upload">
+            <result name="SUCCESS" type="json"/>          
+        </action>
+        <action name="file" class="action.TestUpload" method="file">
+            <result name="SUCCESS" type="json"/>          
+        </action>
+        <!-- 1 -->
+        <action name="first" class="action.FirstAction" method="first">
+            <result name="SUCCESS" type="json"/>          
+        </action>
+        <!-- 2 -->
+        <action name="second" class="action.SecondAction" method="second">
+            <result name="SUCCESS" type="json"/>          
+        </action>
+    </package>
+	
+</struts>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-9-28 13:12:15 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="entity.Users" table="USERS">
+        <id name="uid" type="int">
+            <column name="UID" />
+            <generator class="identity" /><!-- 主键设置为自增长模式 -->
+        </id>
+        <property name="username" type="java.lang.String">
+            <column name="USERNAME" />
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="PASSWORD" />
+        </property>
+        <property name="gender" type="java.lang.String">
+            <column name="GENDER" />
+        </property>
+        <property name="phone" type="java.lang.String">
+            <column name="PHONE" />
+        </property>
+        <property name="headportrait" type="java.lang.String">
+            <column name="HEADPORTRAIT" />
+        </property>
+    </class>
+</hibernate-mapping>

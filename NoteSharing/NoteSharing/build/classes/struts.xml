@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+<!--
+    <constant name="struts.multipart.saveDir" value="C:\Java EE\apache-tomcat-7.0.77\webapps\NoteSharing\images/"/>
+   	<constant name="struts.multipart.maxSize" value="9000000"/>
+   	
+   	
+   	<constant name="struts.custom.i18n.resources" value="globalMessages"/>
+	<constant name="struts.i18n.encoding" value="utf-8"/>
+	
+	
+	<package name="default" extends="struts-default">
+		<action name="upload" class="action.FileUpload" method="upload">
+			<interceptor-ref name="fileUpload">
+			
+				<param name="maximumSize">524288000</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"/>
+			
+			
+			<result name="success">index.jsp</result>
+			<result name="input">index.jsp</result>
+		</action>
+	</package>
+	<package name="default" extends="struts-default">
+		<action name="getFileMessage" class="action.GetFileMessageAction" method="getFileMessage">
+		
+		</action>
+	</package>
+-->
+	<!--
+      <package name="user" namespace="/user" extends="struts-default"> 
+      <action name="test_*" class="action.UsersAction" method="{1}">
+      <result name="login_success">/user/users{1}.jsp</result>
+      <result name="login_failure">/user/userregister.jsp</result>
+      <result name="register">/user/userregister.jsp</result>
+      </action>
+    </package>  
+         -->
+
+   <!--   <result name="login_success"  >/user/userslogin.jsp</result> -->
+      <!--<result type="stream" name="login_success">
+      <param name="contentType">text/html</param>
+      <param name="inputName">inputStream</param> 
+      <result name="login_success" type="json">
+      <param name="contentType">text/html</param>
+      <param name="json">json</param>
+      </result>-->
+     <!--   <package name="default" namespace="/" extends="struts-default">
+        </package>  -->
+<!--   <package name="user" namespace="/user" extends="struts-default">
+      <action name="*_*" class="action.{1}Action" method="{2}">   
+<result name="login_failure">/user/Users_login.jsp</result>
+      <result name="register">/user/Users_login.jsp</result>
+   
+    </action>
+   </package>  -->
+    <package name="default" namespace="/" extends="struts-default,json-default"><!--需要将struts-default改为-->
+        <!-- <action name="*_*" class="action.{1}Action" method="{2}"> -->
+        <action name="login" class="action.UsersAction" method="login">
+            <result name="login_success" type="json"/>
+            <!--返回值类型设置为json,不设置返回页面-->
+        </action>
+        <!-- 以下为注册的action配置 -->
+         <action name="register" class="action.UsersAction" method="register">
+            <result name="login_success" type="json"/>
+        </action>
+<!-- 以下为修改密码新添加的内容 -->
+<action name="modify" class="action.UsersAction" method="modify">
+<result name="modify_success">/user/Users_modify.jsp</result>
+</action>
+        <!-- 以下为密码修改的action配置 -->
+        <action name="updatepassword" class="action.UsersAction" method="updatepassword">
+            <result name="login_success" type="json"/>           
+        </action>
+        <!-- 以下为ServerToAndroid的action配置 -->
+        <action name="ServerToAndroid" class="action.ServerToAndroidAction" method="ServerToAndroid">
+            <result name="login_success" type="json"/>           
+        </action>
+    </package>
+    
+     
+   
+</struts>
